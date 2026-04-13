@@ -1,4 +1,4 @@
-#4
+#5
 from gpiozero import LED, Button
 from time import sleep
 from random import uniform
@@ -18,11 +18,15 @@ led.off()
 
 def pressed(button):
     if button.pin.number == 14:
-        print(left_name + ' won the game!')
+        print(left_name + ' won this round!')
     else:
-        print(right_name + ' won the game!')
-    sys.exit()
+        print(right_name + ' won this round!')
+    print("\nNext round...")
+    led.on()
+    sleep(uniform(5, 10))
+led.off()
 
 right_button.when_pressed = pressed
 left_button.when_pressed = pressed
+
 
